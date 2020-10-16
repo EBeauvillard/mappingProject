@@ -1,0 +1,37 @@
+L'arborescence du projet est la suivante :  ../src/  ../maps/  ../test/  ../report/  ../Makefile  ../README
+
+(***** README *****)
+- Ce fichier texte nous permet de décrire l'arborescence de notre projet.
+
+
+(***** Répertoire src *****)
+- Dans le répertoire 'src' se trouvent tous les fichiers permettant la conception de la solution algorithmique.
+- Dans le fichier 'xml_open.rkt' se trouve l'implémentation des fonctions permettant d'ouvrir les cartes '*.osm' en Racket.
+- Dans le fichier 'parse.rkt' se trouvent l'implémentation des fonctions permettant d'analyser les données fournies par l'ouverture des cartes '*.osm' en Racket, ainsi que l'implémentation des fonctions permettant de créer un graphe suite à ces analyses.
+- Dans le fichier 'graph_interface.rkt' se trouvent la définition de nos structures pour les graphes ainsi que l'implémentation des opérations sur ceux-ci (ajout d'arête ou d'arc, simplification du graphe, algorithme de Dijkstra...).
+- Dans le fichier 'optimal_distance.rkt' se trouve l'implémentation de la formule de Haversine, permettant de calculer la plus courte distance entre deux sommets en tenant compte de la courbure de la Terre.
+- Dans le fichier 'server.rkt' se trouve l'implémentation de notre serveur HTTP et de son ensemble de pages.
+
+
+(***** Répertoire maps *****)
+- Dans le répertoire 'maps' se trouvent toutes les cartes au format .osm (OpenStreetMap) que nous utilisons.
+- Les cartes 'test*' ont été créées par nos soins afin de pouvoir valider certains tests particuliers.
+
+
+(***** Répertoire test *****)
+- Dans le répertoire 'test' se trouvent tous les fichiers permettant l'exécution des tests liés aux implémentations du répertoire 'src'.
+- Le fichier 'test_graph_interface.rkt' teste toutes les opérations, modifications, effectuées sur les graphes et implémentées dans le fichier 'src/graph_interface.rkt'.
+- Le fichier 'test_parse.rkt' teste toutes les opérations de parsing effectuées sur les cartes '../maps/*.osm' ainsi que la création d'un graphe suite à ce parsing. Ces tests se font à partir du fichier 'src/parse.rkt' qui implémente les fonctions.
+
+
+(***** Répertoire report *****)
+- Dans le répertoire 'report' se trouve le rapport final sous la forme du fichier 'report.tex' et 'report.pdf'. 
+
+
+(***** Makefile ******)
+- La commande 'make' lance les sous-commandes 'make test', 'make all' et 'make report'.
+- La commande 'make server' lance le serveur HTTP avec un graphe basé sur la carte 'aprojMapping.osm'.
+- La commande 'make test' lance les différents tests suivants : tests sur le parsing des arcs et sommets depuis les fichiers maps au format .osm.
+- La commande 'make report' compile '../report/report.tex', puis crée et affiche le rapport final 'report.pdf'.  
+- La commande 'make clean' supprime les répertoires 'compiled' qui se créent dans les répertoire 'src' et 'test' à chaque compilation.
+- De plus, il existe d'autres règles intermédiaires permettant de générer les règles expliquées précédemment.
